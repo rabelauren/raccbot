@@ -26,6 +26,12 @@ async def bored(ctx):
     async with ctx.typing():
         response = requests.get("https://www.boredapi.com/api/activity").json()
         await ctx.send((response["activity"]).lower() + "!")
+        
+@client.command()
+async def apod(ctx):
+    async with ctx.typing():
+        response = requests.get("https://api.nasa.gov/planetary/apod?api_key=gdYz94yEJzqRY1SQV1xDOGiAvNDrfxNHnPN3fCV3").json()
+        await ctx.send(response["apod"])
 
 
      
