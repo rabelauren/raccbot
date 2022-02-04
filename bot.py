@@ -5,6 +5,9 @@ client = commands.Bot(command_prefix="racc ", case_insensitive=True)
 
 with open("bot_key.txt", "r") as file:
      botKey = file.read()
+     
+with open("nasa_key.txt", "r") as file:
+     nasaKey = file.read()
 
 @client.command()
 async def test(ctx): 
@@ -30,8 +33,10 @@ async def bored(ctx):
 @client.command()
 async def apod(ctx):
     async with ctx.typing():
-        response = requests.get("https://api.nasa.gov/planetary/apod?api_key=gdYz94yEJzqRY1SQV1xDOGiAvNDrfxNHnPN3fCV3").json()
-        await ctx.send(response["apod"])
+        response = requests.get("https://api.nasa.gov/planetary/apod?api_key=" + nasaKey).json()
+        await ctx.send("**" + response["title"] + "**: " + response["date"])
+        await ctx.send(response["hdurl"])
+        await ctx.send("||" + response["explanation"] + "||")
 
 
      
