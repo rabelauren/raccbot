@@ -4,10 +4,10 @@ import requests
 client = commands.Bot(command_prefix="racc ", case_insensitive=True)
 
 with open("bot_key.txt", "r") as file:
-     botKey = file.read()
+     botKey = file.read().strip()
      
 with open("nasa_key.txt", "r") as file:
-     nasaKey = file.read()
+     nasaKey = file.read().strip()
 
 @client.command()
 async def test(ctx): 
